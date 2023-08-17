@@ -1,22 +1,34 @@
-<!DOCTYPE html>
+
+
+
 <html>
-<head>
-    <!-- 文字コードの指定：html ファイル内で指定する場合 -->
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-</head>
-<body>
-    <h2>SW制御</h2>
-    <form action="" method="GET">
-        <button type="submit">Update</button>
-    </form>
 
-    <?php
-    // GPIO6 端子を入力モードにする
-    $sw_r = exec("pigs m 6 r");
-    echo $sw_r;
-    ?>
+      <head>
 
-    <!-- GPIO6 端子の値を取得 -->
+          <!-文字コードの指定 htmlファイル内で指定する場合>
+          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+          <title>赤LEDの点灯・消灯サンプル</title>
+          <link rel="stylesheet" type="text/css" href="/main.css">
 
-</body>
-</html>
+      </head> 
+      <body>
+
+            <h2>LED制御</h2>
+
+            <form action="" method="GET">
+
+               <button class="btn" type="submit" name="rled" value="1">ON</button> 
+               <button class="btn" type="submit" name="rled" value="0">OFF</button>
+            </form> 
+            <?php
+               // GET パラメータの存在確認 
+               if (isset($_GET["rled"])) {
+               // コマンド生成
+               $cmd = sprintf("pigs m 5 w w 5 %s", $_GET["rled"]); 
+               // コマンド実行
+               exec($cmd);
+               }
+           ?>
+      </body> 
+ </html>
+
