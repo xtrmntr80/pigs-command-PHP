@@ -1,4 +1,4 @@
 # pigs-command-PHP
 
-texit sample cords.
+text sample cords.
 edited by chat GPT 
